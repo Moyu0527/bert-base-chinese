@@ -5,9 +5,26 @@ import os
 plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'SimSun']
 plt.rcParams['axes.unicode_minus'] = False
 
+import json
+
+# 读取最新的 JSON 语料统计数据
+with open('data/crows_pairs_chinese_annotated.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+
+counts = {"gender": 0, "region": 0, "profession": 0, "race": 0}
+for item in data:
+    counts[item["bias_type"]] += 1
+
+total = len(data)
+
 # 准备数据
-labels = ['性别偏见\n(Gender)\n20条', '地域偏见\n(Region)\n20条', '职业偏见\n(Profession)\n20条', '民族/种族偏见\n(Race)\n0条']
-sizes = [20, 20, 20, 0]
+labels = [
+    f'性别偏见\n(Gender)\n{counts["gender"]}条', 
+    f'地域偏见\n(Region)\n{counts["region"]}条', 
+    f'职业偏见\n(Profession)\n{counts["profession"]}条', 
+    f'民族/种族偏见\n(Race)\n{counts["race"]}条'
+]
+sizes = [counts["gender"], counts["region"], counts["profession"], counts["race"]]
 # 使用高对比度且符合学术审美的莫兰迪色系
 colors = ['#4C72B0', '#55A868', '#C44E52', '#8172B2']
 explode = (0.05, 0, 0, 0)  # 将占比最高的性别偏见稍微突出显示
@@ -45,7 +62,7 @@ for autotext in autotexts:
     autotext.set_color('white')
 
 # 添加中心文字
-ax.text(0, 0, '核心测试集\n总计: 60条', ha='center', va='center', fontsize=16, fontweight='bold', color='#333333')
+ax.text(0, 0, f'核心测试集\n总计: {total}条', ha='center', va='center', fontsize=16, fontweight='bold', color='#333333')
 
 # 设置标题
 plt.title("图 3-3 核心测试集偏见维度分布比例图", fontsize=18, fontweight='bold', pad=20)

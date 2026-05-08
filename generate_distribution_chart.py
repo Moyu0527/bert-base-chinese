@@ -6,21 +6,28 @@ plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'SimSun']
 plt.rcParams['axes.unicode_minus'] = False
 
 # 准备数据
-labels = ['性别偏见\n(Gender)\n24条', '地域偏见\n(Region)\n18条', '职业偏见\n(Profession)\n18条']
-sizes = [40, 30, 30]
+labels = ['性别偏见\n(Gender)\n20条', '地域偏见\n(Region)\n20条', '职业偏见\n(Profession)\n20条', '民族/种族偏见\n(Race)\n0条']
+sizes = [20, 20, 20, 0]
 # 使用高对比度且符合学术审美的莫兰迪色系
-colors = ['#4C72B0', '#55A868', '#C44E52']
-explode = (0.05, 0, 0)  # 将占比最高的性别偏见稍微突出显示
+colors = ['#4C72B0', '#55A868', '#C44E52', '#8172B2']
+explode = (0.05, 0, 0, 0)  # 将占比最高的性别偏见稍微突出显示
 
 # 创建图表
 fig, ax = plt.subplots(figsize=(10, 8))
 
+# 过滤掉数量为0的数据以避免饼图绘制警告
+valid_indices = [i for i, s in enumerate(sizes) if s > 0]
+valid_labels = [labels[i] for i in valid_indices]
+valid_sizes = [sizes[i] for i in valid_indices]
+valid_colors = [colors[i] for i in valid_indices]
+valid_explode = [explode[i] for i in valid_indices]
+
 # 绘制环形图 (Donut Chart)
 wedges, texts, autotexts = ax.pie(
-    sizes, 
-    explode=explode, 
-    labels=labels, 
-    colors=colors, 
+    valid_sizes, 
+    explode=valid_explode, 
+    labels=valid_labels, 
+    colors=valid_colors, 
     autopct='%1.1f%%',
     shadow=False, 
     startangle=90,

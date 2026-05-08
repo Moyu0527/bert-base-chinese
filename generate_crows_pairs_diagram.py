@@ -16,7 +16,7 @@ plt.suptitle("图 3-2 本土化 CrowS-Pairs 格式对立示例表", fontsize=24,
 
 # 表头设计
 headers = ["偏见维度", "句 A (符合刻板印象)", "句 B (反转刻板印象)", "语义偏移锁定点"]
-x_centers = [12, 36, 64, 88]
+x_centers = [11, 32, 68, 89]
 
 rect_header = patches.FancyBboxPatch((2, 85), 96, 7, boxstyle="round,pad=0", facecolor="#4A76A8", edgecolor="none")
 ax.add_patch(rect_header)

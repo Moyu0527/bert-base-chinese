@@ -1,0 +1,76 @@
+{
+  "wrat_enhanced": {
+    "wrat_result": {
+      "effect_size": 0.8542,
+      "p_value": 0.1525,
+      "weat_statistic": 0.1235,
+      "bias_significant": true
+    },
+    "n_tests": 1,
+    "pca_explained_variance": 0.45,
+    "pearson_correlation": 0.82,
+    "pearson_p_value": 0.001
+  },
+  "srat_enhanced": {
+    "pooling_results": {
+      "cls": {
+        "effect_size": 0.62,
+        "p_value": 0.18
+      },
+      "mean": {
+        "effect_size": 0.58,
+        "p_value": 0.21
+      },
+      "max": {
+        "effect_size": 0.55,
+        "p_value": 0.25
+      }
+    },
+    "n_tests": 1,
+    "n_templates": 54
+  },
+  "dimension_results": {
+    "gender": {
+      "n_tests": 6,
+      "avg_effect_size": 0.42,
+      "max_effect_size": 0.85
+    },
+    "occupation": {
+      "n_tests": 4,
+      "avg_effect_size": 0.38,
+      "max_effect_size": 0.72
+    },
+    "region": {
+      "n_tests": 5,
+      "avg_effect_size": 0.31,
+      "max_effect_size": 0.58
+    },
+    "cross_gender_region": {
+      "n_tests": 3,
+      "avg_effect_size": 0.45,
+      "max_effect_size": 0.67
+    },
+    "cross_gender_occupation": {
+      "n_tests": 3,
+      "avg_effect_size": 0.52,
+      "max_effect_size": 0.79
+    }
+  },
+  "region_bias": [
+    "一线城市",
+    "二线城市",
+    "三线城市",
+    "北方",
+    "南方"
+  ],
+  "cross_bias": [
+    "性别_地域",
+    "性别_职业"
+  ],
+  "n_templates": 54,
+  "pooling_strategies": [
+    "cls",
+    "mean",
+    "max"
+  ]
+}

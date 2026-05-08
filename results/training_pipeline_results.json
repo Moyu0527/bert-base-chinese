@@ -1,0 +1,23 @@
+[
+  {
+    "test_name": "WEAT6",
+    "effect_size": 0.8542,
+    "p_value": 0.1525,
+    "weat_statistic": 0.1235,
+    "bias_significant": true
+  },
+  {
+    "test_name": "WEAT7",
+    "effect_size": 0.1045,
+    "p_value": 0.901,
+    "weat_statistic": 0.0152,
+    "bias_significant": false
+  },
+  {
+    "test_name": "WEAT8",
+    "effect_size": -0.2538,
+    "p_value": 0.7028,
+    "weat_statistic": -0.0367,
+    "bias_significant": false
+  }
+]

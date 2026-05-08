@@ -1,0 +1,1 @@
+git push -u origin main 2>&1 | Out-File -FilePath push_log.txt

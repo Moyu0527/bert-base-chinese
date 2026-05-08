@@ -1,0 +1,59 @@
+{
+  "training_summary": {
+    "weat_tests": 6,
+    "cdial_dialogues": 22669,
+    "word_level_samples": 322,
+    "sentence_level_samples": 22669
+  },
+  "evaluation_summary": {
+    "safety_prompts": 500,
+    "gender_analyzed_weats": 6,
+    "ngender_available": true
+  },
+  "bias_metrics": {
+    "gender_bias": {
+      "WEAT1": {
+        "male_ratio": 0.52,
+        "female_ratio": 0.48,
+        "effect_size": 0.040000000000000036,
+        "bias_level": "weak"
+      },
+      "WEAT2": {
+        "male_ratio": 0.78,
+        "female_ratio": 0.21999999999999997,
+        "effect_size": 0.56,
+        "bias_level": "strong"
+      },
+      "WEAT6": {
+        "male_ratio": 0.5,
+        "female_ratio": 0.5,
+        "effect_size": 0.0,
+        "bias_level": "weak"
+      },
+      "WEAT7": {
+        "male_ratio": 0.9375,
+        "female_ratio": 0.0625,
+        "effect_size": 0.875,
+        "bias_level": "strong"
+      },
+      "WEAT8": {
+        "male_ratio": 0.875,
+        "female_ratio": 0.125,
+        "effect_size": 0.75,
+        "bias_level": "strong"
+      },
+      "WEAT9": {
+        "male_ratio": 0.9166666666666666,
+        "female_ratio": 0.08333333333333337,
+        "effect_size": 0.8333333333333333,
+        "bias_level": "strong"
+      }
+    },
+    "keyword_bias": {
+      "prompts_with_bias_keywords": 171,
+      "total_prompts": 500,
+      "bias_ratio": 0.342
+    },
+    "overall_bias_score": 0.5097222222222223
+  }
+}

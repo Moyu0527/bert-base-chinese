@@ -1,0 +1,57 @@
+{
+  "weathub_data_count": 13,
+  "cdial_data_count": 28343,
+  "template_count": 45,
+  "wrat_tests": [
+    {
+      "test": "WEAT1",
+      "effect_size": 0.8918146957437224,
+      "p_value": 0.23149112026405774,
+      "data_source": "WEATHub_official"
+    },
+    {
+      "test": "WEAT2",
+      "effect_size": 0.9901171542892502,
+      "p_value": 0.19975229496489608,
+      "data_source": "WEATHub_official"
+    },
+    {
+      "test": "WEAT6",
+      "effect_size": 0.9280981854124231,
+      "p_value": 0.38306619418317667,
+      "data_source": "WEATHub_official"
+    },
+    {
+      "test": "WEAT7",
+      "effect_size": 0.6304725713179691,
+      "p_value": 0.2311498950569371,
+      "data_source": "WEATHub_official"
+    },
+    {
+      "test": "WEAT8",
+      "effect_size": 0.6110460082831602,
+      "p_value": 0.5417833401852691,
+      "data_source": "WEATHub_official"
+    }
+  ],
+  "srat_tests": [
+    {
+      "topic": "性别",
+      "template_count": 45,
+      "avg_bias_score": 0.700739737649539,
+      "data_source": "CDial-Bias_official"
+    },
+    {
+      "topic": "种族文化",
+      "template_count": 45,
+      "avg_bias_score": 0.6893535419235532,
+      "data_source": "CDial-Bias_official"
+    },
+    {
+      "topic": "少数民族",
+      "template_count": 45,
+      "avg_bias_score": 0.5879802669780134,
+      "data_source": "CDial-Bias_official"
+    }
+  ]
+}

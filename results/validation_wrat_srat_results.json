@@ -1,0 +1,36 @@
+{
+  "original_model": {
+    "wrat": {
+      "weat_statistic": 0.007124364955586049,
+      "p_value": 0.8621378621378621,
+      "effect_size": 0.07816930265073697,
+      "n_permutations": 1000,
+      "n_target_x": 11,
+      "n_target_y": 12,
+      "n_attr_a": 8,
+      "n_attr_b": 8,
+      "bias_significant": false
+    },
+    "srat": {
+      "avg_shift": 2.400390625,
+      "shifts_count": 50
+    }
+  },
+  "finetuned_model": {
+    "wrat": {
+      "weat_statistic": -0.02518722392553628,
+      "p_value": 0.7452547452547452,
+      "effect_size": -0.14338069049788035,
+      "n_permutations": 1000,
+      "n_target_x": 11,
+      "n_target_y": 12,
+      "n_attr_a": 8,
+      "n_attr_b": 8,
+      "bias_significant": false
+    },
+    "srat": {
+      "avg_shift": 0.7607421875,
+      "shifts_count": 50
+    }
+  }
+}

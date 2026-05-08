@@ -1,0 +1,666 @@
+{
+  "summary": {
+    "weat_tests": 6,
+    "cdial_dialogues": 22669,
+    "safety_prompts": 10000,
+    "pretrain_samples": 10660,
+    "ngender_available": true
+  },
+  "gender_analysis": [
+    {
+      "weat_name": "WEAT1",
+      "group_x": {
+        "stats": {
+          "male": 5,
+          "female": 15,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "菊花",
+            "gender": "female",
+            "confidence": 0.9450531379118959
+          },
+          {
+            "name": "苜蓿",
+            "gender": "female",
+            "confidence": 0.6000000000000001
+          },
+          {
+            "name": "风信子",
+            "gender": "male",
+            "confidence": 0.9178118486682656
+          },
+          {
+            "name": "金盏花",
+            "gender": "female",
+            "confidence": 0.9695216344522565
+          },
+          {
+            "name": "罂粟",
+            "gender": "male",
+            "confidence": 0.7111111111111111
+          }
+        ]
+      },
+      "group_y": {
+        "stats": {
+          "male": 15,
+          "female": 3,
+          "unknown": 2
+        },
+        "samples": [
+          {
+            "name": "蚂蚁",
+            "gender": "male",
+            "confidence": 0.5294117647058824
+          },
+          {
+            "name": "毛毛虫",
+            "gender": "male",
+            "confidence": 0.6821243518593263
+          },
+          {
+            "name": "跳蚤",
+            "gender": "male",
+            "confidence": 1.0
+          },
+          {
+            "name": "蝗虫",
+            "gender": "male",
+            "confidence": 0.6666666666666666
+          },
+          {
+            "name": "蜘蛛",
+            "gender": "female",
+            "confidence": 0.7222222222222222
+          }
+        ]
+      }
+    },
+    {
+      "weat_name": "WEAT2",
+      "group_x": {
+        "stats": {
+          "male": 11,
+          "female": 9,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "风笛",
+            "gender": "male",
+            "confidence": 0.5155725922376617
+          },
+          {
+            "name": "大提琴",
+            "gender": "female",
+            "confidence": 0.8917335872866307
+          },
+          {
+            "name": "吉他",
+            "gender": "male",
+            "confidence": 0.8192771084337349
+          },
+          {
+            "name": "鲁特琴",
+            "gender": "female",
+            "confidence": 0.8357064632514611
+          },
+          {
+            "name": "长号",
+            "gender": "male",
+            "confidence": 0.8782383419689119
+          }
+        ]
+      },
+      "group_y": {
+        "stats": {
+          "male": 20,
+          "female": 0,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "箭",
+            "gender": "male",
+            "confidence": 0.6636158478632272
+          },
+          {
+            "name": "棍棒",
+            "gender": "male",
+            "confidence": 0.9488372093023255
+          },
+          {
+            "name": "枪",
+            "gender": "male",
+            "confidence": 0.6636158478632272
+          },
+          {
+            "name": "导弹",
+            "gender": "male",
+            "confidence": 0.5853658536585366
+          },
+          {
+            "name": "矛",
+            "gender": "male",
+            "confidence": 0.6636158478632272
+          }
+        ]
+      }
+    },
+    {
+      "weat_name": "WEAT6",
+      "group_x": {
+        "stats": {
+          "male": 8,
+          "female": 0,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "张伟",
+            "gender": "male",
+            "confidence": 0.8808527660009907
+          },
+          {
+            "name": "李强",
+            "gender": "male",
+            "confidence": 0.9743082248508145
+          },
+          {
+            "name": "王磊",
+            "gender": "male",
+            "confidence": 0.9052852038930639
+          },
+          {
+            "name": "刘洋",
+            "gender": "male",
+            "confidence": 0.7699593849724397
+          },
+          {
+            "name": "陈明",
+            "gender": "male",
+            "confidence": 0.8569922706472343
+          }
+        ]
+      },
+      "group_y": {
+        "stats": {
+          "male": 0,
+          "female": 8,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "王芳",
+            "gender": "female",
+            "confidence": 0.8460916800507401
+          },
+          {
+            "name": "李娜",
+            "gender": "female",
+            "confidence": 0.9331927597653396
+          },
+          {
+            "name": "张丽",
+            "gender": "female",
+            "confidence": 0.9117060293049379
+          },
+          {
+            "name": "刘燕",
+            "gender": "female",
+            "confidence": 0.867832359622659
+          },
+          {
+            "name": "陈静",
+            "gender": "female",
+            "confidence": 0.8322714367593939
+          }
+        ]
+      }
+    },
+    {
+      "weat_name": "WEAT7",
+      "group_x": {
+        "stats": {
+          "male": 8,
+          "female": 0,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "数学",
+            "gender": "male",
+            "confidence": 0.8477659386589745
+          },
+          {
+            "name": "代数",
+            "gender": "male",
+            "confidence": 0.7592592592592592
+          },
+          {
+            "name": "几何",
+            "gender": "male",
+            "confidence": 0.7030603804797353
+          },
+          {
+            "name": "微积分",
+            "gender": "male",
+            "confidence": 0.8106164582289139
+          },
+          {
+            "name": "方程",
+            "gender": "male",
+            "confidence": 0.7674288455388552
+          }
+        ]
+      },
+      "group_y": {
+        "stats": {
+          "male": 7,
+          "female": 1,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "诗歌",
+            "gender": "female",
+            "confidence": 0.5919011306863002
+          },
+          {
+            "name": "艺术",
+            "gender": "male",
+            "confidence": 0.7391782831988262
+          },
+          {
+            "name": "舞蹈",
+            "gender": "male",
+            "confidence": 0.6896551724137931
+          },
+          {
+            "name": "文学",
+            "gender": "male",
+            "confidence": 0.8477659386589745
+          },
+          {
+            "name": "小说",
+            "gender": "male",
+            "confidence": 0.6454545454545454
+          }
+        ]
+      }
+    },
+    {
+      "weat_name": "WEAT8",
+      "group_x": {
+        "stats": {
+          "male": 7,
+          "female": 0,
+          "unknown": 1
+        },
+        "samples": [
+          {
+            "name": "科学",
+            "gender": "male",
+            "confidence": 0.8477659386589745
+          },
+          {
+            "name": "技术",
+            "gender": "male",
+            "confidence": 0.7391782831988262
+          },
+          {
+            "name": "物理",
+            "gender": "male",
+            "confidence": 0.8357222730507268
+          },
+          {
+            "name": "化学",
+            "gender": "male",
+            "confidence": 0.8477659386589745
+          },
+          {
+            "name": "爱因斯坦",
+            "gender": "male",
+            "confidence": 0.7254842411670253
+          }
+        ]
+      },
+      "group_y": {
+        "stats": {
+          "male": 7,
+          "female": 1,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "诗歌",
+            "gender": "female",
+            "confidence": 0.5919011306863002
+          },
+          {
+            "name": "艺术",
+            "gender": "male",
+            "confidence": 0.7391782831988262
+          },
+          {
+            "name": "莎士比亚",
+            "gender": "male",
+            "confidence": 0.7655736873414071
+          },
+          {
+            "name": "舞蹈",
+            "gender": "male",
+            "confidence": 0.6896551724137931
+          },
+          {
+            "name": "文学",
+            "gender": "male",
+            "confidence": 0.8477659386589745
+          }
+        ]
+      }
+    },
+    {
+      "weat_name": "WEAT9",
+      "group_x": {
+        "stats": {
+          "male": 5,
+          "female": 0,
+          "unknown": 1
+        },
+        "samples": [
+          {
+            "name": "悲伤",
+            "gender": "male",
+            "confidence": 0.75
+          },
+          {
+            "name": "无望",
+            "gender": "male",
+            "confidence": 0.8188130269466027
+          },
+          {
+            "name": "忧郁",
+            "gender": "male",
+            "confidence": 0.5935727788279773
+          },
+          {
+            "name": "流泪",
+            "gender": "male",
+            "confidence": 0.5737704918032788
+          },
+          {
+            "name": "悲惨",
+            "gender": "unknown",
+            "confidence": 0
+          }
+        ]
+      },
+      "group_y": {
+        "stats": {
+          "male": 6,
+          "female": 0,
+          "unknown": 0
+        },
+        "samples": [
+          {
+            "name": "生病",
+            "gender": "male",
+            "confidence": 0.8461538461538461
+          },
+          {
+            "name": "疾病",
+            "gender": "male",
+            "confidence": 0.8461538461538461
+          },
+          {
+            "name": "流感",
+            "gender": "male",
+            "confidence": 0.7815126050420168
+          },
+          {
+            "name": "疾病",
+            "gender": "male",
+            "confidence": 0.8461538461538461
+          },
+          {
+            "name": "病毒",
+            "gender": "male",
+            "confidence": 0.654639175257732
+          }
+        ]
+      }
+    }
+  ],
+  "bias_type_distribution": {
+    "gender": 3,
+    "region": 1,
+    "occupation": 0,
+    "race": 3,
+    "mixed": 13
+  },
+  "wrat_results": [
+    {
+      "weat_name": "WEAT1",
+      "effect_size": -1.1599461257249661,
+      "gender_stats_x": {
+        "male": 5,
+        "female": 15,
+        "unknown": 0
+      },
+      "gender_stats_y": {
+        "male": 15,
+        "female": 3,
+        "unknown": 2
+      },
+      "male_percentage_x": 0.24875621890547261,
+      "male_percentage_y": 0.8287292817679557,
+      "target_x_words": [
+        "菊花",
+        "苜蓿",
+        "风信子",
+        "金盏花",
+        "罂粟"
+      ],
+      "target_y_words": [
+        "蚂蚁",
+        "毛毛虫",
+        "跳蚤",
+        "蝗虫",
+        "蜘蛛"
+      ],
+      "data_source": "WEATHub_official"
+    },
+    {
+      "weat_name": "WEAT2",
+      "effect_size": -0.8955223880597014,
+      "gender_stats_x": {
+        "male": 11,
+        "female": 9,
+        "unknown": 0
+      },
+      "gender_stats_y": {
+        "male": 20,
+        "female": 0,
+        "unknown": 0
+      },
+      "male_percentage_x": 0.5472636815920398,
+      "male_percentage_y": 0.9950248756218905,
+      "target_x_words": [
+        "风笛",
+        "大提琴",
+        "吉他",
+        "鲁特琴",
+        "长号"
+      ],
+      "target_y_words": [
+        "箭",
+        "棍棒",
+        "枪",
+        "导弹",
+        "矛"
+      ],
+      "data_source": "WEATHub_official"
+    },
+    {
+      "weat_name": "WEAT6",
+      "effect_size": 1.9753086419753088,
+      "gender_stats_x": {
+        "male": 8,
+        "female": 0,
+        "unknown": 0
+      },
+      "gender_stats_y": {
+        "male": 0,
+        "female": 8,
+        "unknown": 0
+      },
+      "male_percentage_x": 0.9876543209876544,
+      "male_percentage_y": 0.0,
+      "target_x_words": [
+        "张伟",
+        "李强",
+        "王磊",
+        "刘洋",
+        "陈明"
+      ],
+      "target_y_words": [
+        "王芳",
+        "李娜",
+        "张丽",
+        "刘燕",
+        "陈静"
+      ],
+      "data_source": "WEATHub_official"
+    },
+    {
+      "weat_name": "WEAT7",
+      "effect_size": 0.24691358024691357,
+      "gender_stats_x": {
+        "male": 8,
+        "female": 0,
+        "unknown": 0
+      },
+      "gender_stats_y": {
+        "male": 7,
+        "female": 1,
+        "unknown": 0
+      },
+      "male_percentage_x": 0.9876543209876544,
+      "male_percentage_y": 0.8641975308641976,
+      "target_x_words": [
+        "数学",
+        "代数",
+        "几何",
+        "微积分",
+        "方程"
+      ],
+      "target_y_words": [
+        "诗歌",
+        "艺术",
+        "舞蹈",
+        "文学",
+        "小说"
+      ],
+      "data_source": "WEATHub_official"
+    },
+    {
+      "weat_name": "WEAT8",
+      "effect_size": 0.2434359241870978,
+      "gender_stats_x": {
+        "male": 7,
+        "female": 0,
+        "unknown": 1
+      },
+      "gender_stats_y": {
+        "male": 7,
+        "female": 1,
+        "unknown": 0
+      },
+      "male_percentage_x": 0.9859154929577465,
+      "male_percentage_y": 0.8641975308641976,
+      "target_x_words": [
+        "科学",
+        "技术",
+        "物理",
+        "化学",
+        "爱因斯坦"
+      ],
+      "target_y_words": [
+        "诗歌",
+        "艺术",
+        "莎士比亚",
+        "舞蹈",
+        "文学"
+      ],
+      "data_source": "WEATHub_official"
+    },
+    {
+      "weat_name": "WEAT9",
+      "effect_size": -0.006428801028608211,
+      "gender_stats_x": {
+        "male": 5,
+        "female": 0,
+        "unknown": 1
+      },
+      "gender_stats_y": {
+        "male": 6,
+        "female": 0,
+        "unknown": 0
+      },
+      "male_percentage_x": 0.9803921568627452,
+      "male_percentage_y": 0.9836065573770493,
+      "target_x_words": [
+        "悲伤",
+        "无望",
+        "忧郁",
+        "流泪",
+        "悲惨"
+      ],
+      "target_y_words": [
+        "生病",
+        "疾病",
+        "流感",
+        "疾病",
+        "病毒"
+      ],
+      "data_source": "WEATHub_official"
+    }
+  ],
+  "srat_results": {
+    "tests": [
+      {
+        "topic": "种族文化",
+        "n_samples": 7859,
+        "avg_bias_score": 0.35214834980555065,
+        "data_source": "CDial-Bias_official"
+      },
+      {
+        "topic": "性别",
+        "n_samples": 6706,
+        "avg_bias_score": 0.3691928796481317,
+        "data_source": "CDial-Bias_official"
+      },
+      {
+        "topic": "地域",
+        "n_samples": 4023,
+        "avg_bias_score": 0.43706517991818133,
+        "data_source": "CDial-Bias_official"
+      },
+      {
+        "topic": "职业",
+        "n_samples": 3245,
+        "avg_bias_score": 0.45631494657037613,
+        "data_source": "CDial-Bias_official"
+      },
+      {
+        "topic": "少数民族",
+        "n_samples": 836,
+        "avg_bias_score": 0.005679807657193059,
+        "data_source": "CDial-Bias_official"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Large model files & datasets
+models/
+*.bin
+*.h5
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+data/pretrain_corpus_weat_cdial.txt
+*.csv
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+
+# Results (optional, we keep PDFs but ignore raw heavy jsons if needed, here we keep results)
+# results/

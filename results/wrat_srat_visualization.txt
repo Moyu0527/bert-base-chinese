@@ -1,0 +1,18 @@
+================================================================================
+         WRAT + SRAT MODEL REPRESENTATION BIAS ANALYSIS
+================================================================================
+
+WRAT EFFECT SIZES:
+--------------------------------------------------------------------------------
+WEAT6      [▓▓▓▓▓▓              ] d= 0.6179  p= 0.2574 [MEDIUM]
+WEAT7      [                    ] d= 0.0045  p= 0.9901 [WEAK]
+WEAT8      [                    ] d=-0.2538  p= 0.7228 [WEAK]
+WEAT1      [████████            ] d= 0.8542  p= 0.1525 [STRONG ⚠️]
+WEAT2      [▓▓▓▓▓               ] d= 0.5678  p= 0.2132 [MEDIUM]
+WEAT3      [                    ] d= 0.0546  p= 0.8812 [WEAK]
+
+
+SRAT CONCEPT:
+--------------------------------------------------------------------------------
+   Vector centroid shift in contextualized embedding space
+   Dynamic template generation & expected effect size

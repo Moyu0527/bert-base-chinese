@@ -68,7 +68,7 @@ for i, (row, y) in enumerate(zip(rows, y_pos)):
 
     # 最小对立双向箭头
     ax.annotate("", xy=(x_centers[2]-12, y), xytext=(x_centers[1]+12, y), arrowprops=dict(arrowstyle="<|-|>", color="#888888", lw=2.5))
-    ax.text(50, y+1.5, "最小对立\n(Minimal Pair)", fontsize=11, ha='center', va='bottom', color="#555555", fontweight='bold')
+    ax.text(50, y+1.5, "最小对立\n(Minimal Pair)", fontsize=11, ha='center', va='bottom', color="#555555", fontweight='bold', bbox=dict(facecolor='white', edgecolor='none', pad=1))
 
     # 锁定点分析
     ax.text(x_centers[3], y, row["target"], fontsize=13, ha='center', va='center', linespacing=1.5, color="#222222")

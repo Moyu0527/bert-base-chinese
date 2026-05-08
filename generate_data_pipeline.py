@@ -44,9 +44,9 @@ def draw_step_bg(x, y, w, h, title, color):
 # 第一阶段：多源数据输入
 # ==========================================
 draw_step_bg(15, 45, 24, 60, "第一阶段\n多源原始数据输入", "#3C5488")
-_, right_d1, _, _ = draw_box(15, 60, 20, 10, "WEAT 英文词表\n(基础属性与目标词)", "#F0F4FA", "#3C5488")
-_, right_d2, _, _ = draw_box(15, 40, 20, 10, "CDial-Bias 语料\n(中文社交真实对话)", "#F0F4FA", "#3C5488")
-_, right_d3, _, _ = draw_box(15, 20, 20, 10, "Safety-Prompts\n(安全伦理测试场景)", "#F0F4FA", "#3C5488")
+_, right_d1, _, _ = draw_box(15, 60, 22, 10, "WEAT 英文词表\n(基础属性与目标词)", "#F0F4FA", "#3C5488")
+_, right_d2, _, _ = draw_box(15, 40, 22, 10, "CDial-Bias 语料\n(中文社交真实对话)", "#F0F4FA", "#3C5488")
+_, right_d3, _, _ = draw_box(15, 20, 22, 10, "Safety-Prompts\n(安全伦理测试场景)", "#F0F4FA", "#3C5488")
 
 # ==========================================
 # 第二阶段：数据处理核心流 (清洗 -> 增强 -> 校验)
@@ -54,13 +54,13 @@ _, right_d3, _, _ = draw_box(15, 20, 20, 10, "Safety-Prompts\n(安全伦理测�
 draw_step_bg(50, 45, 40, 60, "第二阶段\n数据处理与语义工程", "#448C55")
 
 # 数据清洗
-left_c1, right_c1, _, _ = draw_box(38, 50, 14, 26, "数据清洗\n\n• 中文映射\n• 正则表达式过滤\n• 异常字符去除\n• 长度标准化", "#EEF7E8", "#448C55", fontsize=12)
+left_c1, right_c1, _, _ = draw_box(38, 50, 16, 32, "数据清洗\n\n• 中文映射\n• 正则表达式过滤\n• 异常字符去除\n• 长度标准化", "#EEF7E8", "#448C55", fontsize=12)
 
 # 语义增强
-left_e1, right_e1, _, _ = draw_box(62, 50, 14, 26, "语义增强\n\n• 同义词替换\n• 动态模板生成\n• 语境多样性扩充\n• 中性化处理", "#EEF7E8", "#448C55", fontsize=12)
+left_e1, right_e1, _, _ = draw_box(62, 50, 16, 32, "语义增强\n\n• 同义词替换\n• 动态模板生成\n• 语境多样性扩充\n• 中性化处理", "#EEF7E8", "#448C55", fontsize=12)
 
 # 人工校对 (位于下方)
-left_m1, right_m1, top_m1, bot_m1 = draw_box(50, 22, 38, 8, "专家人工校对 / 标注 (交叉验证逻辑一致性)", "#FFF4E6", "#D9822B", fontsize=13)
+left_m1, right_m1, top_m1, bot_m1 = draw_box(50, 22, 38, 10, "专家人工校对 / 标注\n(交叉验证逻辑一致性)", "#FFF4E6", "#D9822B", fontsize=13)
 
 # 连接 第一阶段 -> 数据清洗
 draw_arrow(right_d1, (left_c1[0], 60))
@@ -81,7 +81,7 @@ ax.text(34, 31, "重构", fontsize=11, color="#666666")
 # ==========================================
 draw_step_bg(85, 45, 24, 60, "第三阶段\n基准数据集输出", "#68589B")
 
-left_out, _, _, bot_out = draw_box(85, 50, 20, 24, "CrowS-Pairs 格式\n中文偏见数据集\n\n四大维度：\n1. 性别偏见\n2. 职业偏见\n3. 地域偏见\n4. 民族/种族偏见", "#EBE6F2", "#68589B", fontsize=12)
+left_out, _, _, bot_out = draw_box(85, 50, 22, 28, "CrowS-Pairs 格式\n中文偏见数据集\n\n四大维度：\n1. 性别偏见\n2. 职业偏见\n3. 地域偏见\n4. 民族/种族偏见", "#EBE6F2", "#68589B", fontsize=12)
 
 # 增强 -> 输出
 draw_arrow(right_e1, left_out)

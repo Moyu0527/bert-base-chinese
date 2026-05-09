@@ -25,13 +25,13 @@ def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=13, ls='-', zorder
     ax.text(x, y, text, fontsize=fontsize, ha='center', va='center', color='#222222', zorder=zorder+1, fontweight='bold', linespacing=1.6)
     return (x - w/2, y), (x + w/2, y), (x, y + h/2), (x, y - h/2)
 
-def draw_arrow(start, end, text="", color="#666666", lw=2.5):
+def draw_arrow(start, end, text="", color="#666666", lw=2.5, y_offset=2):
     ax.annotate("", xy=end, xytext=start,
                 arrowprops=dict(arrowstyle="->", color=color, lw=lw))
     if text:
         mid_x = (start[0] + end[0]) / 2
         mid_y = (start[1] + end[1]) / 2
-        ax.text(mid_x, mid_y + 2, text, fontsize=12, color=color, ha='center', va='bottom', fontweight='bold')
+        ax.text(mid_x, mid_y + y_offset, text, fontsize=12, color=color, ha='center', va='bottom', fontweight='bold', bbox=dict(facecolor='white', edgecolor='none', pad=1))
 
 # ==========================================
 # 左侧：输入特征层
@@ -67,9 +67,10 @@ draw_arrow(right_in, left_opt1)
 draw_arrow(right_in, left_opt2)
 draw_arrow(right_in, left_opt3)
 
-draw_arrow(right_opt1, left_out, text="降低内存分配")
-draw_arrow(right_opt2, left_out, text="提供连续显存")
-draw_arrow(right_opt3, left_out, text="稳定显存曲线")
+# 对右侧指向资源层的箭头分别设置不同的 Y 轴偏移量，防止文字遮挡箭头或过于偏离
+draw_arrow(right_opt1, left_out, text="降低内存分配", y_offset=4)
+draw_arrow(right_opt2, left_out, text="提供连续显存", y_offset=2)
+draw_arrow(right_opt3, left_out, text="稳定显存曲线", y_offset=-6)
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/Hardware_Optimization_Logic.pdf', dpi=300, bbox_inches='tight')

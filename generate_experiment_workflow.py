@@ -97,7 +97,7 @@ draw_arrow(ft_right, eval_left, text="输出去偏新权重", text_offset=(0, 3)
 
 # 5 -> 3 (闭环：评估完再送回决策进行判断)
 # 画一条大弧线从底部的评估节点回到中间的决策节点
-draw_arrow(eval_right, dec_right, text="二次度量反馈\n(闭环迭代)", rad=-0.6, color="#68589B", text_offset=(4, 0))
+draw_arrow(eval_right, dec_right, text="二次度量反馈\n(闭环迭代)", rad=-0.6, color="#68589B", text_offset=(1, 0))
 
 # ==========================================
 # 补充：输出出口 (达到去偏最终状态)

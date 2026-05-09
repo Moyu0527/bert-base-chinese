@@ -65,6 +65,11 @@ b1_top, b1_right, b1_bot, b1_left = draw_box(BERT_X, BERT_Y - 10, 24, 8, "AMP �
 b2_top, b2_right, b2_bot, b2_left = draw_box(BERT_X, BERT_Y + 10, 24, 8, "全层 Encoder (梯度更新)\n(Layer 1-12)", "#FCEBEB", "#A84144")
 
 # ==========================================
+# 绘制输出层
+# ==========================================
+out_top, out_right, out_bot, out_left = draw_box(OUT_X, OUT_Y, W, 20, "【输出端】\n\nMLM 预测 Head\n\n计算交叉熵损失\n(Cross-Entropy Loss)\n\n预测概率 vs 真实标签", "#EEF7E8", "#448C55")
+
+# ==========================================
 # 绘制前向传播连接线 (Forward Pass)
 # ==========================================
 # 输入 -> AMP 层 (直线)

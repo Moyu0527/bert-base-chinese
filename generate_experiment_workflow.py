@@ -81,23 +81,23 @@ eval_top, eval_right, eval_bot, eval_left = draw_box(EVAL_X, EVAL_Y, W, H, "【�
 # 绘制连接与闭环数据流
 # ==========================================
 # 1 -> 2 (输入送去探测)
-draw_arrow(in_right, p1_left, text="初始化量化度量", text_offset=(0, 2))
+draw_arrow(in_right, p1_left, text="初始化量化度量", text_offset=(0, 3))
 
 # 2 -> 3 (探测结果送去决策)
 draw_arrow(p1_bot, dec_top)
 
 # 3 -> 4 (Yes: 需要微调，走左边)
-draw_arrow(dec_left, ft_top, text="是 (Yes)\n偏见超标，进入微调", rad=-0.2, color="#A84144", text_offset=(-12, 10))
+draw_arrow(dec_left, ft_top, text="是 (Yes)\n偏见超标，进入微调", rad=-0.2, color="#A84144", text_offset=(-22, 10))
 
 # 3 -> 5 (No: 偏见达标，直接走下面评估)
-draw_arrow(dec_bot, eval_top, text="否 (No)\n偏见在安全域内", color="#448C55", text_offset=(10, 0))
+draw_arrow(dec_bot, eval_top, text="否 (No)\n偏见在安全域内", color="#448C55", text_offset=(12, 0))
 
 # 4 -> 5 (微调完送去评估)
-draw_arrow(ft_right, eval_left, text="输出去偏新权重", text_offset=(0, 2))
+draw_arrow(ft_right, eval_left, text="输出去偏新权重", text_offset=(0, 3))
 
 # 5 -> 3 (闭环：评估完再送回决策进行判断)
 # 画一条大弧线从底部的评估节点回到中间的决策节点
-draw_arrow(eval_right, dec_right, text="二次度量反馈\n(闭环迭代)", rad=-0.6, color="#68589B", text_offset=(10, 0))
+draw_arrow(eval_right, dec_right, text="二次度量反馈\n(闭环迭代)", rad=-0.6, color="#68589B", text_offset=(18, 0))
 
 # ==========================================
 # 补充：输出出口 (达到去偏最终状态)
@@ -106,7 +106,7 @@ OUT_X, OUT_Y = 50, 45
 out_top, out_right, out_bot, out_left = draw_box(OUT_X, OUT_Y, 18, 8, "去偏后状态\n(输出最终报告)", "#E6F3F7", "#2B7B8C")
 
 # 当决策为 No，或者闭环迭代达到阈值后，最终导向输出
-draw_arrow(dec_left, out_right, text="完成迭代", color="#2B7B8C", text_offset=(0, -3))
+draw_arrow(dec_left, out_right, text="完成迭代", color="#2B7B8C", text_offset=(-6, -3))
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/Experiment_Closed_Loop_Workflow.pdf', dpi=300, bbox_inches='tight')

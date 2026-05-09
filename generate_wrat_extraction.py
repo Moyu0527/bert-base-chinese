@@ -93,10 +93,10 @@ draw_arrow(in_right, left_t, text="加载词汇", text_offset=(0, 0))
 draw_arrow(right_t, left_e, text="传入", text_offset=(0, 3), text2="Token IDs", text2_offset=(0, -3))
 
 # Embedding -> 输出 (直接水平连接)
-draw_arrow(right_e, out_left, text="抽取特征", text_offset=(0, 0))
+draw_arrow(right_e, (out_left[0], 50), text="抽取特征", text_offset=(0, 0))
 
 # 全集归一化 (去噪后) -> 输出
-draw_arrow((MID_X2 + 8, 30), (OUT_X - 7, 30), text="高维投影", color="#448C55", text_offset=(0, 0))
+draw_arrow((MID_X2 + 8, 30), (out_left[0], 30), text="高维投影", color="#448C55", text_offset=(0, 0))
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/WRAT_Feature_Extraction_Logic.pdf', dpi=300, bbox_inches='tight')

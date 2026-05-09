@@ -25,8 +25,8 @@ def draw_layer_bg(y_center, h, title, color):
         linestyle='--', lw=2, zorder=0
     )
     ax.add_patch(rect)
-    # 左上角标明层级名称
-    ax.text(x_center - w/2 + 2, y_center + h/2 - 3, title, fontsize=16, fontweight='bold', color=color, ha='left', va='center', zorder=1)
+    # 左上角标明层级名称，将 y 坐标向上偏移 2 个单位，避免与虚线框重合
+    ax.text(x_center - w/2 + 2, y_center + h/2 + 2, title, fontsize=16, fontweight='bold', color=color, ha='left', va='center', zorder=1)
 
 def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=13, zorder=2):
     rect = patches.FancyBboxPatch(

@@ -34,13 +34,17 @@ def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=12, shape="round",
     ax.text(x, y, text, fontsize=fontsize, ha='center', va='center', color='#222222', zorder=zorder+1, fontweight='bold', linespacing=1.6)
     return (x - w/2, y), (x + w/2, y), (x, y + h/2), (x, y - h/2)
 
-def draw_arrow(start, end, text="", color="#555555", lw=2.5, text_offset=(0,0)):
+def draw_arrow(start, end, text="", color="#555555", lw=2.5, text_offset=(0,0), text2="", text2_offset=(0,0)):
     ax.annotate("", xy=end, xytext=start,
                 arrowprops=dict(arrowstyle="->", color=color, lw=lw), zorder=1)
     if text:
         mid_x = (start[0] + end[0]) / 2 + text_offset[0]
         mid_y = (start[1] + end[1]) / 2 + text_offset[1]
         ax.text(mid_x, mid_y, text, fontsize=12, color=color, ha='center', va='center', fontweight='bold', bbox=dict(facecolor='white', edgecolor='none', pad=2, alpha=0.9), zorder=2)
+    if text2:
+        mid_x2 = (start[0] + end[0]) / 2 + text2_offset[0]
+        mid_y2 = (start[1] + end[1]) / 2 + text2_offset[1]
+        ax.text(mid_x2, mid_y2, text2, fontsize=12, color=color, ha='center', va='center', fontweight='bold', bbox=dict(facecolor='white', edgecolor='none', pad=2, alpha=0.9), zorder=2)
 
 # ==========================================
 # 左侧：输入层 (文件)
@@ -85,11 +89,14 @@ out_left, _, _, _ = draw_box(OUT_X, 50, 14, 30, "【输出层】\n\n可计算张
 draw_arrow(in_right, left_t, text="加载词汇", text_offset=(0, 0))
 
 # Tokenizer -> Embedding
-draw_arrow(right_t, left_e, text="传入 Token IDs", text_offset=(0, 0))
+# “传入”在箭头上，“Token IDs”在箭头下
+draw_arrow(right_t, left_e, text="传入", text_offset=(0, 3), text2="Token IDs", text2_offset=(0, -3))
 
-# Embedding (去噪后) -> 输出
-draw_arrow((MID_X2 + 8, 42), out_left, text="抽取特征", text_offset=(-6, -3))
-draw_arrow((MID_X2 + 8, 30), out_left, text="高维投影", color="#448C55", text_offset=(0, -2))
+# Embedding -> 输出 (直接水平连接)
+draw_arrow(right_e, out_left, text="抽取特征", text_offset=(0, 0))
+
+# 全集归一化 (去噪后) -> 输出
+draw_arrow((MID_X2 + 8, 30), (OUT_X - 7, 30), text="高维投影", color="#448C55", text_offset=(0, 0))
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/WRAT_Feature_Extraction_Logic.pdf', dpi=300, bbox_inches='tight')

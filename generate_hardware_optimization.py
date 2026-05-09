@@ -36,7 +36,7 @@ def draw_arrow(start, end, text="", color="#666666", lw=2.5, y_offset=2):
 # ==========================================
 # 左侧：输入特征层
 # ==========================================
-left_in, right_in, top_in, bot_in = draw_box(15, 50, 22, 40, "输入特征层\n\n• BERT 预训练模型\n  (768维隐状态)\n\n• 偏见评测语料\n  (CrowS-Pairs)\n\n• 批次数据输入\n  (Batch Tensors)", "#F0F4FA", "#3C5488", fontsize=14)
+left_in, right_in, top_in, bot_in = draw_box(15, 50, 22, 40, "输入特征层\n\n- BERT 预训练模型\n  (768维隐状态)\n\n- 偏见评测语料\n  (CrowS-Pairs)\n\n- 批次数据输入\n  (Batch Tensors)", "#F0F4FA", "#3C5488", fontsize=14)
 
 # ==========================================
 # 中间：优化引擎层

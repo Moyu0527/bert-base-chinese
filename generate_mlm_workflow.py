@@ -84,11 +84,11 @@ draw_arrow(b2_right, (out_left[0], BERT_Y + 10), text="输出表征", text_offse
 # ==========================================
 # 绘制反向传播回环 (Backward Pass)
 # ==========================================
-# 输出端 -> BERT 编码器层 (计算梯度，反向大回环，起终点都在上方)
-draw_arrow((out_top[0], out_top[1] + 2), (b1_top[0] + 6, b1_top[1] + 22), text="Loss 梯度反向传播\n(Unscale & Clip Gradients)", color="#A84144", lw=3, rad=-0.4, text_offset=(10, 10), zorder_arrow=5, zorder_text=6)
+# 输出端 -> BERT 全层 Encoder (计算梯度，反向大回环，越过 AMP 层，直接指向底下的红色编码器框)
+draw_arrow((out_top[0], out_top[1] + 2), (b1_top[0] + 6, b1_top[1] + 2), text="Loss 梯度反向传播\n(Unscale & Clip Gradients)", color="#A84144", lw=3, rad=-0.4, text_offset=(10, 15), zorder_arrow=5, zorder_text=6)
 
-# BERT 内部梯度更新循环标识 (位于红框左侧，自己绕向自己)
-draw_arrow((b1_left[0] - 2, b1_left[1] + 2), (b1_left[0] - 2, b1_left[1] - 2), text="全量\n微调", color="#A84144", lw=2, rad=1.5, text_offset=(-5, 0))
+# BERT 内部梯度更新循环标识 (指向红色全层Encoder自身，表示自身权重的更新)
+draw_arrow((b1_left[0] - 2, b1_left[1] + 2), (b1_left[0], b1_left[1] - 2), text="全量\n微调", color="#A84144", lw=2, rad=1.5, text_offset=(-6, 0), zorder_arrow=5, zorder_text=6)
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/MLM_FineTuning_Workflow.pdf', dpi=300, bbox_inches='tight')

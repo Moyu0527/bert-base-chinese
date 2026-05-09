@@ -96,7 +96,7 @@ draw_arrow(right_t, left_e, text="传入", text_offset=(0, 3), text2="Token IDs"
 draw_arrow(right_e, (out_left[0], 50), text="抽取\n特征", text_offset=(0, 0), zorder_arrow=5, zorder_text=6)
 
 # 全集归一化 (去噪后) -> 输出 (提高 zorder 确保穿透虚线框)
-draw_arrow((MID_X2 + 8, 30), (out_left[0], 30), text="高维\n投影", color="#448C55", text_offset=(0, 0), zorder_arrow=5, zorder_text=6)
+draw_arrow((MID_X2 + 8, 30), (out_left[0], 40), text="高维投影", color="#448C55", text_offset=(0, 0), zorder_arrow=5, zorder_text=6)
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/WRAT_Feature_Extraction_Logic.pdf', dpi=300, bbox_inches='tight')

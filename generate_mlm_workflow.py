@@ -58,37 +58,32 @@ rect_mid = patches.FancyBboxPatch(
     linestyle='--', lw=2.5, zorder=0
 )
 ax.add_patch(rect_mid)
-ax.text(BERT_X, BERT_Y + 22, "【核心层】BERT 编码器层", fontsize=15, fontweight='bold', color="#D9822B", ha='center', va='bottom')
+ax.text(BERT_X, BERT_Y + 22, "【核心层】BERT 模型微调引擎", fontsize=15, fontweight='bold', color="#D9822B", ha='center', va='bottom')
 
 # 内部 Encoder 堆叠 (本项目中没有冻结下层权重，而是全量微调并使用 AMP)
-b1_top, b1_right, b1_bot, b1_left = draw_box(BERT_X, BERT_Y - 10, 24, 8, "全层 Encoder (梯度更新)\n(Layer 1-12)", "#FCEBEB", "#A84144")
-b2_top, b2_right, b2_bot, b2_left = draw_box(BERT_X, BERT_Y + 10, 24, 8, "AMP 混合精度与梯度缩放\n(GradScaler & Autocast)", "#FFF4E6", "#D9822B")
-
-# ==========================================
-# 绘制输出层
-# ==========================================
-out_top, out_right, out_bot, out_left = draw_box(OUT_X, OUT_Y, W, 20, "【输出端】\n\nMLM 预测 Head\n\n计算交叉熵损失\n(Cross-Entropy Loss)\n\n预测概率 vs 真实标签", "#EEF7E8", "#448C55")
+b1_top, b1_right, b1_bot, b1_left = draw_box(BERT_X, BERT_Y - 10, 24, 8, "AMP 混合精度与梯度缩放\n(GradScaler & Autocast)", "#FFF4E6", "#D9822B")
+b2_top, b2_right, b2_bot, b2_left = draw_box(BERT_X, BERT_Y + 10, 24, 8, "全层 Encoder (梯度更新)\n(Layer 1-12)", "#FCEBEB", "#A84144")
 
 # ==========================================
 # 绘制前向传播连接线 (Forward Pass)
 # ==========================================
-# 输入 -> BERT 编码器层 (直线)
+# 输入 -> AMP 层 (直线)
 draw_arrow((in_right[0], BERT_Y - 10), b1_left, text="前向传播\n(Forward)", text_offset=(0, 2))
 
-# BERT 编码器 -> AMP 层 (直线，垂直向上)
+# AMP 层 -> BERT 编码器 (直线，垂直向上)
 draw_arrow(b1_top, b2_bot, text="FP16\n计算流", text_offset=(3, 0))
 
-# AMP 层 -> 输出端 (直线)
+# BERT 编码器 -> 输出端 (直线)
 draw_arrow(b2_right, (out_left[0], BERT_Y + 10), text="输出表征", text_offset=(0, 2))
 
 # ==========================================
 # 绘制反向传播回环 (Backward Pass)
 # ==========================================
-# 输出端 -> BERT 全层 Encoder (计算梯度，反向大回环，越过 AMP 层，直接指向底下的红色编码器框)
+# 输出端 -> AMP层 (计算梯度，反向大回环，指向 AMP 层进行 Unscale)
 draw_arrow((out_top[0], out_top[1] + 2), (b1_top[0] + 6, b1_top[1] + 2), text="Loss 梯度反向传播\n(Unscale & Clip Gradients)", color="#A84144", lw=3, rad=-0.4, text_offset=(10, 15), zorder_arrow=5, zorder_text=6)
 
-# BERT 内部梯度更新循环标识 (指向红色全层Encoder自身，表示自身权重的更新)
-draw_arrow((b1_left[0] - 2, b1_left[1] + 2), (b1_left[0], b1_left[1] - 2), text="全量\n微调", color="#A84144", lw=2, rad=1.5, text_offset=(-6, 0), zorder_arrow=5, zorder_text=6)
+# BERT 内部梯度更新循环标识 (指向红色全层Encoder自身)
+draw_arrow((b2_left[0] - 2, b2_left[1] + 2), (b2_left[0], b2_left[1] - 2), text="全量\n微调", color="#A84144", lw=2, rad=1.5, text_offset=(-6, 0), zorder_arrow=5, zorder_text=6)
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/MLM_FineTuning_Workflow.pdf', dpi=300, bbox_inches='tight')

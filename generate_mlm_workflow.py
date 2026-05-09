@@ -45,7 +45,7 @@ W, H = 22, 14
 # ==========================================
 # 绘制输入层
 # ==========================================
-in_top, in_right, in_bot, in_left = draw_box(IN_X, IN_Y, W, 20, "【输入端】\n\n加载本土化平衡语料\n(CrowS-Pairs)\n\n例:\n'她是 [MASK]'\n'他是 [MASK]'", "#F0F4FA", "#3C5488")
+in_top, in_right, in_bot, in_left = draw_box(IN_X, IN_Y, 26, 24, "【输入端】\n\n加载本土化平衡语料\n(CrowS-Pairs)\n\n例:\n'她是 [MASK]'\n'他是 [MASK]'", "#F0F4FA", "#3C5488")
 
 # ==========================================
 # 绘制核心层 (BERT Encoder)
@@ -67,28 +67,28 @@ b2_top, b2_right, b2_bot, b2_left = draw_box(BERT_X, BERT_Y + 10, 24, 8, "全层
 # ==========================================
 # 绘制输出层
 # ==========================================
-out_top, out_right, out_bot, out_left = draw_box(OUT_X, OUT_Y, W, 20, "【输出端】\n\nMLM 预测 Head\n\n计算交叉熵损失\n(Cross-Entropy Loss)\n\n预测概率 vs 真实标签", "#EEF7E8", "#448C55")
+out_top, out_right, out_bot, out_left = draw_box(OUT_X, OUT_Y, 26, 24, "【输出端】\n\nMLM 预测 Head\n\n计算交叉熵损失\n(Cross-Entropy Loss)\n\n预测概率 vs 真实标签", "#EEF7E8", "#448C55")
 
 # ==========================================
 # 绘制前向传播连接线 (Forward Pass)
 # ==========================================
 # 输入 -> AMP 层 (直线)
-draw_arrow((in_right[0], BERT_Y - 10), b1_left, text="前向传播\n(Forward)", text_offset=(0, 2))
+draw_arrow((in_right[0], b1_left[1]), b1_left, text="前向传播\n(Forward)", text_offset=(0, 0))
 
 # AMP 层 -> BERT 编码器 (直线，垂直向上)
-draw_arrow(b1_top, b2_bot, text="FP16\n计算流", text_offset=(3, 0))
+draw_arrow(b1_top, b2_bot, text="FP16\n计算流", text_offset=(0, 0))
 
 # BERT 编码器 -> 输出端 (直线)
-draw_arrow(b2_right, (out_left[0], BERT_Y + 10), text="输出表征", text_offset=(0, 2))
+draw_arrow((b2_right[0], b2_right[1] - 3), (out_left[0], b2_right[1] - 3), text="输出表征", text_offset=(0, 0))
 
 # ==========================================
 # 绘制反向传播回环 (Backward Pass)
 # ==========================================
-# 输出端 -> AMP层 (计算梯度，反向大回环，指向 AMP 层进行 Unscale)
-draw_arrow((out_top[0], out_top[1] + 2), (b1_top[0] + 6, b1_top[1] + 2), text="Loss 梯度反向传播\n(Unscale & Clip Gradients)", color="#A84144", lw=3, rad=-0.4, text_offset=(10, 15), zorder_arrow=5, zorder_text=6)
+# 输出端 -> BERT 编码器层 (计算梯度，直线反向)
+draw_arrow((out_left[0], b2_right[1] + 3), (b2_right[0], b2_right[1] + 3), text="Loss 梯度反向传播\n(Unscale & Clip Gradients)", color="#A84144", lw=3, rad=0.0, text_offset=(0, 0), zorder_arrow=5, zorder_text=6)
 
-# BERT 内部梯度更新循环标识 (指向红色全层Encoder自身)
-draw_arrow((b2_left[0] - 2, b2_left[1] + 2), (b2_left[0], b2_left[1] - 2), text="全量\n微调", color="#A84144", lw=2, rad=1.5, text_offset=(-6, 0), zorder_arrow=5, zorder_text=6)
+# BERT 内部梯度更新循环标识 (从上边界连接到左边界)
+draw_arrow((b2_top[0] - 6, b2_top[1]), (b2_left[0], b2_left[1] + 2), text="全量\n微调", color="#A84144", lw=2, rad=0.5, text_offset=(0, 0), zorder_arrow=5, zorder_text=6)
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/MLM_FineTuning_Workflow.pdf', dpi=300, bbox_inches='tight')

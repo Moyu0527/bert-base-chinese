@@ -12,7 +12,7 @@ ax.set_ylim(0, 100)
 ax.axis('off')
 
 # 全局标题
-plt.suptitle("图 4-8 MLM 去偏微调模块执行流程图", fontsize=22, fontweight='bold', y=0.96)
+# plt.suptitle("图 4-8 MLM 去偏微调模块执行流程图", fontsize=22, fontweight='bold', y=0.96)
 
 def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=13, zorder=2, ls='-'):
     rect = patches.FancyBboxPatch(
@@ -85,12 +85,19 @@ draw_arrow((b2_right[0], b2_right[1] - 3), (out_left[0], b2_right[1] - 3), text=
 # 绘制反向传播回环 (Backward Pass)
 # ==========================================
 # 输出端 -> BERT 编码器层 (计算梯度，直线反向)
-draw_arrow((out_left[0], b2_right[1] + 3), (b2_right[0], b2_right[1] + 3), text="Loss 梯度反向传播\n(Unscale & Clip Gradients)", color="#A84144", lw=3, rad=0.0, text_offset=(0, 0), zorder_arrow=5, zorder_text=6)
+draw_arrow((out_left[0], b2_right[1] + 3), (b2_right[0], b2_right[1] + 3), text="Loss 梯度反向传播\n(Unscale & Clip Gradients)", color="#A84144", lw=3, rad=0.0, text_offset=(0, 10), zorder_arrow=5, zorder_text=6)
 
-# BERT 内部梯度更新循环标识 (从上边界连接到左边界)
-draw_arrow((b2_top[0] - 6, b2_top[1]), (b2_left[0], b2_left[1] + 2), text="全量\n微调", color="#A84144", lw=2, rad=0.5, text_offset=(0, 0), zorder_arrow=5, zorder_text=6)
+# BERT 内部梯度更新循环标识 (从上边界连接到左边界，外侧折线)
+x0, y0 = b2_top
+x1, y1 = b2_left
+px, py = x1 - 5, y0 + 5
+ax.plot([x0, x0, px, px], [y0, py, py, y1], color="#A84144", lw=2, zorder=5)
+ax.annotate("", xy=(x1, y1), xytext=(px, y1),
+            arrowprops=dict(arrowstyle="->", color="#A84144", lw=2), zorder=5)
+ax.text(x0 - 4, py, "全量微调", fontsize=12, color="#A84144", ha='center', va='bottom', fontweight='bold', bbox=dict(facecolor='white', edgecolor='none', pad=2, alpha=0.9), zorder=6)
 
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/MLM_FineTuning_Workflow.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/MLM_FineTuning_Workflow.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/MLM_FineTuning_Workflow.svg', format='svg', bbox_inches='tight')
 print("MLM 去偏微调模块执行流程图生成完毕！保存在 results/ 目录下。")

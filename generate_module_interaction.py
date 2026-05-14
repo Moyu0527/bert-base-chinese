@@ -10,7 +10,7 @@ ax.set_xlim(0, 100)
 ax.set_ylim(0, 100)
 ax.axis('off')
 
-plt.suptitle("图 4-3 系统核心功能模块交互逻辑图", fontsize=24, fontweight='bold', y=0.96)
+# plt.suptitle("图 4-3 系统核心功能模块交互逻辑图", fontsize=24, fontweight='bold', y=0.96)
 
 def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=13):
     rect = patches.FancyBboxPatch(
@@ -95,4 +95,5 @@ draw_arrow((B_X+W/2, B_Y+H/2), (M_X-W/2, M_Y-H/2), "反馈去偏新权重 (触�
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/Module_Interaction_Logic.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/Module_Interaction_Logic.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/Module_Interaction_Logic.svg', format='svg', bbox_inches='tight')
 print("核心功能模块交互逻辑图生成完毕！保存在 results/ 目录下。")

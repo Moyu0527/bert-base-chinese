@@ -12,7 +12,7 @@ ax.set_ylim(0, 100)
 ax.axis('off')
 
 # 全局标题
-plt.suptitle("图 3-2 本土化 CrowS-Pairs 格式对立示例表", fontsize=24, fontweight='bold', y=0.96)
+# plt.suptitle("图 3-2 本土化 CrowS-Pairs 格式对立示例表", fontsize=24, fontweight='bold', y=0.96)
 
 # 表头设计
 headers = ["偏见维度", "句 A (符合刻板印象)", "句 B (反转刻板印象)", "语义偏移锁定点"]
@@ -80,4 +80,5 @@ ax.text(50, 4, footer_text, fontsize=12, ha='center', va='center', color="#55555
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/CrowS_Pairs_Examples.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/CrowS_Pairs_Examples.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/CrowS_Pairs_Examples.svg', format='svg', bbox_inches='tight')
 print("CrowS-Pairs 示例表生成完毕！保存在 results/ 目录下。")

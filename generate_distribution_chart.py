@@ -65,7 +65,7 @@ for autotext in autotexts:
 ax.text(0, 0, f'核心测试集\n总计: {total}条', ha='center', va='center', fontsize=16, fontweight='bold', color='#333333')
 
 # 设置标题
-plt.title("图 3-3 核心测试集偏见维度分布比例图", fontsize=18, fontweight='bold', pad=20)
+# plt.title("图 3-3 核心测试集偏见维度分布比例图", fontsize=18, fontweight='bold', pad=20)
 
 # 确保输出目录存在
 os.makedirs('results', exist_ok=True)
@@ -73,5 +73,6 @@ os.makedirs('results', exist_ok=True)
 # 保存图片
 plt.savefig('results/Bias_Dimension_Distribution.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/Bias_Dimension_Distribution.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/Bias_Dimension_Distribution.svg', format='svg', bbox_inches='tight')
 
 print("偏见维度分布比例图生成完毕！保存在 results/ 目录下。")

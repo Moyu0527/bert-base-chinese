@@ -9,7 +9,10 @@ plt.rcParams['axes.unicode_minus'] = False
 fig, ax = plt.subplots(figsize=(14, 18))
 ax.set_xlim(0, 100)
 ax.set_ylim(0, 100)
+# 隐藏坐标轴
 ax.axis('off')
+
+# ax.text(50, 95, "系统总体架构与业务流程图", fontsize=20, ha='center', va='center', fontweight='bold', color='#333')
 
 def draw_layer_bg(y_start, y_end, title, edgecolor, facecolor):
     """绘制每层的背景大框和标题"""
@@ -56,14 +59,14 @@ b2_bot, _ = draw_box(50, 85, 28, 7, "CDial-Bias & Safety-Prompts\n(真实对话�
 b3_bot, _ = draw_box(80, 85, 24, 7, "CrowS-Pairs 语料\n(刻板印象最小对比对)", "#F0F4FA", "#3C5488")
 
 # 第二层：处理层
-l2_t1 = "WRAT 模块 (静态词表征关联)\n" + "-"*26 + "\n• 提取预训练底层词向量特征\n• 引入全集归一化 (频率去噪)\n• 目标与属性词余弦效应量计算"
+l2_t1 = "WRAT 模块 (静态词表征关联)\n" + "-"*26 + "\n- 提取预训练底层词向量特征\n- 引入全集归一化 (频率去噪)\n- 目标与属性词余弦效应量计算"
 b4_bot, b4_top = draw_box(30, 60, 36, 10, l2_t1, "#EEF7E8", "#448C55")
 
-l2_t2 = "SRAT 模块 (语境化句表征关联)\n" + "-"*26 + "\n• 融合多场景动态掩码模板生成\n• 提取模型深层语境隐藏状态\n• 隐空间重心偏移量与期望值计算"
+l2_t2 = "SRAT 模块 (语境化句表征关联)\n" + "-"*26 + "\n- 融合多场景动态掩码模板生成\n- 提取模型深层语境隐藏状态\n- 隐空间重心偏移量与期望值计算"
 b5_bot, b5_top = draw_box(70, 60, 36, 10, l2_t2, "#EEF7E8", "#448C55")
 
 # 第三层：干预层
-l3_t = "MLM 微调去偏模块 (Masked Language Modeling)\n" + "-"*40 + "\n• 基于动态掩码与对比语料持续预训练\n• 引入 AMP 混合精度与 GradScaler 梯度缩放优化\n• 解耦并削弱模型固有表征中的隐性偏见"
+l3_t = "MLM 微调去偏模块 (Masked Language Modeling)\n" + "-"*40 + "\n- 基于动态掩码与对比语料持续预训练\n- 引入 AMP 混合精度与 GradScaler 梯度缩放优化\n- 解耦并削弱模型固有表征中的隐性偏见"
 b6_bot, b6_top = draw_box(50, 35, 54, 10, l3_t, "#FCEBEB", "#A84144")
 
 # 第四层：输出层
@@ -92,7 +95,20 @@ for target in [b7_top, b8_top, b9_top, b10_top]:
     ax.annotate("", xy=target, xytext=(target[0], trunk_mid_y),
                 arrowprops=dict(arrowstyle="->", color="#666666", lw=2.5, shrinkA=0, shrinkB=3))
 
+# 辅助虚线框
+def draw_dashed_box(x, y, box_w, box_h, text, facecolor, edgecolor):
+    rect = patches.FancyBboxPatch((x - box_w / 2, y - box_h / 2), box_w, box_h,
+                                  boxstyle="round,pad=1", edgecolor=edgecolor,
+                                  facecolor=facecolor, lw=1.5, linestyle='--', zorder=1)
+    ax.add_patch(rect)
+    ax.text(x, y, text, ha='center', va='center', fontsize=11, color="#333", fontweight='bold')
+
+draw_dashed_box(85, 83, 16, 8, "- 预训练权重\n- bert-base", "white", "#E8F0FE")
+draw_dashed_box(15, 35, 16, 8, "- 效应量 d\n- 向量偏移度", "white", "#FCEBEB")
+draw_dashed_box(15, 12, 16, 8, "- 多维雷达图\n- PCA 散点图", "white", "#F3E5F5")
+
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/Project_Architecture_Flowchart.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/Project_Architecture_Flowchart.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/Project_Architecture_Flowchart.svg', format='svg', bbox_inches='tight')
 print("流程图生成完毕！保存在 results/ 目录下。")

@@ -12,7 +12,7 @@ ax.set_ylim(0, 100)
 ax.axis('off')
 
 # 全局标题
-plt.suptitle("图 4-4 系统业务处理与实验验证闭环流程图", fontsize=24, fontweight='bold', y=0.95)
+# plt.suptitle("图 4-4 系统业务处理与实验验证闭环流程图", fontsize=24, fontweight='bold', y=0.95)
 
 def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=13, shape="round", zorder=2):
     if shape == "round":
@@ -44,7 +44,7 @@ def draw_arrow(start, end, text="", color="#444444", lw=2.5, rad=0.0, text_offse
         ax.text(mid_x, mid_y, text, fontsize=13, color=color, ha='center', va='center', fontweight='bold', bbox=dict(facecolor='white', edgecolor='none', pad=2, alpha=0.9), zorder=2)
 
 # ==========================================
-# 核心节点坐标设计 (环形拓扑)
+# 核心节点坐标设计 (闭环控制结构)
 # ==========================================
 # 1. 输入阶段 (左上)
 IN_X, IN_Y = 20, 75
@@ -111,4 +111,5 @@ draw_arrow(dec_left, out_right, text="完成迭代", color="#2B7B8C", text_offse
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/Experiment_Closed_Loop_Workflow.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/Experiment_Closed_Loop_Workflow.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/Experiment_Closed_Loop_Workflow.svg', format='svg', bbox_inches='tight')
 print("系统业务处理与实验验证闭环流程图生成完毕！保存在 results/ 目录下。")

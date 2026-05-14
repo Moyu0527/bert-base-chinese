@@ -12,7 +12,7 @@ ax.set_ylim(0, 100)
 ax.axis('off')
 
 # 全局标题
-plt.suptitle("图 4-2 偏见度量系统总体架构设计框图", fontsize=24, fontweight='bold', y=0.92)
+# plt.suptitle("图 4-2 偏见度量系统总体架构设计框图", fontsize=24, fontweight='bold', y=0.92)
 
 def draw_layer_bg(y_center, h, title, color):
     """绘制每层的大虚线背景框"""
@@ -109,4 +109,5 @@ ax.plot([88, 85], [L2_Y, L2_Y], color="#A84144", lw=2.5)
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/System_Architecture_Diagram.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/System_Architecture_Diagram.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/System_Architecture_Diagram.svg', format='svg', bbox_inches='tight')
 print("系统总体架构设计框图生成完毕！保存在 results/ 目录下。")

@@ -2,11 +2,16 @@ import json
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import seaborn as sns
 from matplotlib.backends.backend_pdf import PdfPages
 from sklearn.decomposition import PCA
 import torch
 from transformers import BertTokenizer, BertModel
+
+# 兼容旧版本 seaborn 和新版本 matplotlib
+if not hasattr(mpl.cm, 'register_cmap'):
+    mpl.cm.register_cmap = mpl.colormaps.register
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'Arial Unicode MS']
@@ -150,14 +155,26 @@ def plot_radar(pdf, orig_data, ft_data):
     ft_srat += ft_srat[:1]
     
     fig, ax = plt.subplots(figsize=(8.27, 11.69), subplot_kw=dict(polar=True))
+    
+    # 调整雷达图在画布中的相对位置和大小，使其缩小并居中，防止标签超出边界
+    ax.set_position([0.2, 0.3, 0.6, 0.4]) 
+    
     ax.plot(angles, orig_srat, color='red', linewidth=2, label='原始模型 (Original)')
     ax.fill(angles, orig_srat, color='red', alpha=0.25)
     ax.plot(angles, ft_srat, color='blue', linewidth=2, label='去偏模型 (Fine-tuned)')
     ax.fill(angles, ft_srat, color='blue', alpha=0.25)
+    
+    # 增加标签距离圆心的距离(pad)，避免和图形重叠
     ax.set_xticks(angles[:-1])
-    ax.set_xticklabels(dimensions, fontsize=14)
-    ax.set_title('多维度 SRAT 偏移量雷达图对比 (面积越小代表整体偏见越低)', size=18, y=1.1)
-    ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
+    dimensions_multiline = [dim.replace(" (", "\n(") for dim in dimensions]
+    ax.set_xticklabels(dimensions_multiline, fontsize=14)
+    ax.tick_params(axis='x', pad=20) 
+    
+    # 适当下调标题位置
+    ax.set_title('多维度 SRAT 偏移量雷达图对比 (面积越小代表整体偏见越低)', size=18, y=1.15)
+    
+    # 将图例移至右上角，并稍微向左下调整以避免超出边界
+    ax.legend(loc='upper right', bbox_to_anchor=(1.15, 1.08))
     
     pdf.savefig(fig)
     plt.close(fig)

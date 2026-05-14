@@ -12,7 +12,7 @@ ax.set_ylim(0, 100)
 ax.axis('off')
 
 # 全局标题
-plt.suptitle("图 4-1 系统硬件适配与显存优化逻辑示意图", fontsize=24, fontweight='bold', y=0.96)
+# plt.suptitle("图 4-1 系统硬件适配与显存优化逻辑示意图", fontsize=24, fontweight='bold', y=0.96)
 
 def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=13, ls='-', zorder=2):
     rect = patches.FancyBboxPatch(
@@ -75,4 +75,5 @@ draw_arrow(right_opt3, left_out, text="稳定显存曲线", y_offset=-6)
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/Hardware_Optimization_Logic.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/Hardware_Optimization_Logic.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/Hardware_Optimization_Logic.svg', format='svg', bbox_inches='tight')
 print("系统硬件适配与显存优化逻辑示意图生成完毕！保存在 results/ 目录下。")

@@ -12,7 +12,7 @@ ax.set_ylim(0, 100)
 ax.axis('off')
 
 # 全局标题
-plt.suptitle("图 3-1 中文偏见数据集构建与清洗流程图", fontsize=22, fontweight='bold', y=0.92)
+# plt.suptitle("图 3-1 中文偏见数据集构建与清洗流程图", fontsize=22, fontweight='bold', y=0.92)
 
 def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=13, zorder=2):
     rect = patches.FancyBboxPatch(
@@ -92,4 +92,5 @@ draw_arrow(right_e1, left_out)
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/Data_Processing_Pipeline.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/Data_Processing_Pipeline.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/Data_Processing_Pipeline.svg', format='svg', bbox_inches='tight')
 print("数据清洗流程图生成完毕！保存在 results/ 目录下。")

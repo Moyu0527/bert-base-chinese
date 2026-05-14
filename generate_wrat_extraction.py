@@ -12,7 +12,7 @@ ax.set_ylim(0, 100)
 ax.axis('off')
 
 # 全局标题
-plt.suptitle("图 4-5 WRAT 模块词特征抽取与索引映射流程图", fontsize=20, fontweight='bold', y=0.95)
+# plt.suptitle("图 4-5 WRAT 模块词特征抽取与索引映射流程图", fontsize=20, fontweight='bold', y=0.95)
 
 def draw_box(x, y, w, h, text, facecolor, edgecolor, fontsize=12, shape="round", zorder=2):
     if shape == "round":
@@ -50,7 +50,7 @@ def draw_arrow(start, end, text="", color="#555555", lw=2.5, text_offset=(0,0), 
 # 左侧：输入层 (文件)
 # ==========================================
 IN_X = 15
-_, in_right, _, _ = draw_box(IN_X, 50, 18, 30, "【输入层】\n\n词表文本文件\n(JSON / CSV)\n\n• 目标词 (如: 男/女)\n• 属性词 (如: 职业)", "#F0F4FA", "#3C5488", shape="cylinder")
+_, in_right, _, _ = draw_box(IN_X, 50, 18, 30, "【输入层】\n\n词表文本文件\n(JSON / CSV)\n\n- 目标词 (如: 男/女)\n- 属性词 (如: 职业)", "#F0F4FA", "#3C5488", shape="cylinder")
 
 # ==========================================
 # 中间：处理层 (映射与抽取)
@@ -80,7 +80,7 @@ draw_arrow((MID_X2, 42), (MID_X2, 34), color="#448C55", lw=2)
 # 右侧：输出层 (张量)
 # ==========================================
 OUT_X = 92
-out_left, _, _, _ = draw_box(OUT_X, 50, 14, 30, "【输出层】\n\n可计算张量\n\n• Target Tensor\n• Attribute Tensor\n(FP16 / FP32)", "#EBE6F2", "#68589B")
+out_left, _, _, _ = draw_box(OUT_X, 50, 14, 30, "【输出层】\n\n可计算张量\n\n- Target Tensor\n- Attribute Tensor\n(FP16 / FP32)", "#EBE6F2", "#68589B")
 
 # ==========================================
 # 连接箭头
@@ -101,4 +101,5 @@ draw_arrow((MID_X2 + 8, 30), (out_left[0], 40), text="高维投影", color="#448
 os.makedirs('results', exist_ok=True)
 plt.savefig('results/WRAT_Feature_Extraction_Logic.pdf', dpi=300, bbox_inches='tight')
 plt.savefig('results/WRAT_Feature_Extraction_Logic.png', dpi=300, bbox_inches='tight')
+plt.savefig('results/WRAT_Feature_Extraction_Logic.svg', format='svg', bbox_inches='tight')
 print("WRAT 模块词特征抽取与索引映射流程图生成完毕！保存在 results/ 目录下。")
